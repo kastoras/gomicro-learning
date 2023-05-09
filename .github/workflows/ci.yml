@@ -1,0 +1,35 @@
+name: Go Learn CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build-services:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+ 
+    - uses: mr-smithers-excellent/docker-build-push@v6
+      name: Build Authentication service & push Docker image
+      with:
+        image: kastoras/gomicro-learning/authentication-service
+        tags: v1, latest
+        registry: kastoras/images
+        dockerfile: authentication-service/authentication-service.dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+ 
+ 
+#    - name: Build Authentication Service Docker image
+#      run: docker build ./authentication-service --file authentication-service.dockerfile --tag gml-authentication-service:latest
+      
+#    - name: Build Broker Service Docker image
+#      run: docker build ./broker-service --file broker-service.dockerfile --tag gml-broker-service:latest      
+
+ 
