@@ -19,3 +19,10 @@
 
 # Go workspace file
 go.work
+
+authentication-service/db-data
+authentication-service/authApp
+
+broker-service/brokerApp
+
+front-end/fronApp
