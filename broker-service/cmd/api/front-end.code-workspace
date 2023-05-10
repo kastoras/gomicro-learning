@@ -1,0 +1,20 @@
+{
+	"folders": [
+		{
+			"path": "../../../front-end"
+		},
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../project"
+		},
+		{
+			"path": "../../../authentication-service"
+		},
+		{
+			"path": "../../../logger-service"
+		}
+	],
+	"settings": {}
+}

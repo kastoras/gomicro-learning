@@ -26,3 +26,4 @@ authentication-service/authApp
 broker-service/brokerApp
 
 front-end/fronApp
+project/db-data/
