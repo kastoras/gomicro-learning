@@ -1,0 +1,41 @@
+name: Go Learn CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build-services:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+ 
+    - name: Build Broker Go App      
+      working-directory: ./project
+      run: make build_broker
+      
+    - name: Build Broker Production Image
+      working-directory: ./project
+      run: docker-compose build broker-service
+ 
+    - name: Create image tag for registry
+      run: docker image tag project_broker-service:latest kastoras/images:latest
+ 
+    - name: Log to Docker Hub
+      uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Push image to docker hub
+      run: docker image push kastoras/images:latest
+
+
+ 
+
+ 
