@@ -24,7 +24,7 @@ jobs:
       run: docker-compose build broker-service
  
     - name: Create image tag for registry
-      run: docker image tag project-broker-service:latest kastoras/images:latest
+      run: docker image tag project_broker-service:latest kastoras/images:latest
  
     - name: Log to Docker Hub
       uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
