@@ -3,7 +3,7 @@ version: '3'
 services:
 
   caddy:
-    image: kastoras/micro-caddy:1.0.0
+    image: kastoras/micro-caddy:1.0.1
     deploy:
       mode: replicated
       replicas: 1
@@ -15,13 +15,15 @@ services:
       - caddy_config:/config
 
   frontend-service:
-    image: kastoras/frontend-service:1.0.1
+    image: kastoras/frontend-service:1.0.9
     deploy:
       mode: replicated
       replicas: 1   
+    environment:
+      BROKER_URL: "http://backend"      
 
   broker-service:
-    image: kastoras/broker-service:1.0.1
+    image: kastoras/broker-service:1.0.2
     deploy:
       mode: replicated
       replicas: 1   
